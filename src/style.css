@@ -1,0 +1,23 @@
+.mainWrapper{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+
+}
+
+.inputWrapper{
+  width: 50%;
+}
+
+.tableContentHolder{
+  width: 40%;
+  height: fit-content;
+}
+
+
+@media screen and (max-width:767px){
+  .mainWrapper{
+    flex-direction: column;
+  
+  }
+}
