@@ -2,6 +2,7 @@
 import { ref, watch } from 'vue';
 
 const formData = ref([]);
+const fileInputRef = ref(null)
 
 const groupedData = ref([{ userName: '', phoneNum: '', email: '' },{ userName: '', phoneNum: '', email: '' }]);
 
@@ -113,6 +114,14 @@ const handleSubmit = () => {
     selectedDate.value = '';
     selectedFile.value = null;
     selectedCheckboxes.value = [];
+    groupedData.value = [
+      { userName: '', phoneNum: '', email: '' },
+      { userName: '', phoneNum: '', email: '' }
+    ];
+
+    if(fileInputRef.value){
+      fileInputRef.value = null;
+    }
   }
 };
 
@@ -192,7 +201,7 @@ const handleFileChange = (event) => {
     <span v-if="additionalErrors.checkboxError" style="color:red">{{ additionalErrors.checkboxError }}</span>
 
     <div style="display:flex; padding-top: 12px; gap:10px; flex-wrap: wrap;">
-      <input type="file" @change="handleFileChange" accept="image/jpeg, .pdf"/>
+      <input type="file" @change="handleFileChange" accept="image/jpeg, .pdf" ref="fileInputRef"/>
       <span v-if="additionalErrors.fileError" style="color:red">{{ additionalErrors.fileError }}</span>
 
       <select v-model="selectedCity">
